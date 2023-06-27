@@ -1,0 +1,69 @@
+//Estilo Funcional
+.custom-select {
+  cursor: pointer;
+  position: relative;
+  * {
+    user-select: none;
+    box-sizing: border-box;
+  }
+  svg {
+    max-height: 1.375rem;
+    transition: 0.3s;
+    flex-shrink: 0;
+  }
+  &__name {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  &__icon {
+    margin-left: auto;
+  }
+  &__options {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s;
+    border-top: none !important;
+    position: absolute;
+    top: 83%;
+    left: 0rem;
+    width: 100%;
+    &::-webkit-scrollbar {
+      width: 0.3125rem;
+      &-track{
+        background: #f1f1f1;
+      }
+      &-thumb{
+        background: #888;
+        &:hover{
+          background: #555;
+        }
+      }
+    }
+    div {
+      &:hover,
+      &:focus {
+        color: #ff0000;
+        svg {
+          fill: #ff0000;
+        }
+      }
+    }
+  }
+  &.active {
+    .custom-select {
+      &__options {
+        max-height: 7rem;
+        overflow-y: scroll;
+        z-index: 2;
+      }
+      &__icon {
+        transform: rotate(0.5turn);
+      }
+      &__name {
+        border-bottom-color: transparent !important;
+      }
+    }
+  }
+}
