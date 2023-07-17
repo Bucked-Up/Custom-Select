@@ -186,9 +186,3 @@ const watchSelects = () => {
 };
 
 watchSelects();
-
-document.querySelectorAll("[role='button']").forEach((el) => {
-  el.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") el.click();
-  });
-});

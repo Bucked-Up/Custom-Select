@@ -1,20 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./style.css">
+  <!-- <link rel="stylesheet" href="./style.css"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/BuckedUp-DasLabs/Custom-Select@latest/style.css" />
+  <!-- <script src="https://cdn.jsdelivr.net/gh/BuckedUp-DasLabs/Custom-Select@b7698f99e365bdff93cd767323365e3176df9a33/custom-select.js" defer></script> -->
   <script src="./custom-select.js" defer></script>
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/BuckedUp-DasLabs/Ambassadors-Form@latest/src/scss/style.css" />
+  <script src="https://cdn.jsdelivr.net/gh/BuckedUp-DasLabs/Ambassadors-Form@latest/src/js/scripts.js" defer></script>
   <title>Document</title>
 </head>
+
 <body>
-  <form>
-    <select custom-select>
-      <option value="">Select one</option>
-      <option value="0">lorem ipsum</option>
-      <option value="1">dolor sit</option>
-      <option value="2">amet</option>
-    </select>
+  <form id="custom-form">
+    <div class="padding-sides">
+      <h3 class="title-red">Get Started</h3>
+      <h4>Apply today and become a part of our Bucked Up Family!</h4>
+      <label>
+        <span class="label-text">First Name</span>
+        <input id="first-name" type="text" required>
+      </label>
+      <label>
+        <span class="label-text">Last Name</span>
+        <input id="last-name" type="text" required>
+      </label>
+      <label>
+        <span class="label-text">Email</span>
+        <input id="email" type="email" regex="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required>
+      </label>
+      <label>
+        <span class="label-text">Confirm your email</span>
+        <input id="email-confirm" type="email" match="email" regex="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required>
+      </label>
+      <label>
+        <span class="label-text">Password <span class="label-text">(Must be at least 4 characters long)</span></span>
+        <input id="password" type="password" regex="^.{4,}$" required>
+      </label>
+      <label>
+        <span class="label-text">Confirm your password</span>
+        <input id="password-confirm" type="password" match="password" regex="^.{4,}$" required>
+      </label>
+      <label>
+        <span class="label-text">Cell Phone <span class="label-text">(Confirm you are a real person!)</span></span>
+        <input id="phone" type="tel" regex="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,7}$" required>
+      </label>
+      <label>
+        <span class="label-text">Country</span>
+        <select id="country" custom-select>
+          <option value="United States">United States</option>
+        </select>
+      </label>
+      <label>
+        <span class="label-text">State/Region/Province</span>
+        <select id="state" custom-select>
+          <option value="">Please Select</option>
+        </select>
+      </label>
+      <label>
+        <span class="label-text">City/Locality/Dependent Locality</span>
+        <input id="city" type="text" required>
+      </label>
+      <label>
+        <span class="label-text">Address/Street/House Number</span>
+        <input id="address1" type="text" required>
+      </label>
+      <label>
+        <span class="label-text">Apt/Suite/Floor <span class="label-text">(Optional)</span></span>
+        <input id="address2" regex="^[0-9]*$" type="text" optional>
+      </label>
+      <label>
+        <span class="label-text">Zip code/Postal Code</span>
+        <input id="zip" regex="^[0-9\.\-\/]+$" type="text" required>
+      </label>
+      <h3>Social Media Accounts</h3>
+      <h4>Please make sure all of your accounts are PUBLIC, not private.</h4>
+    </div>
+    <div class="socials">
+    </div>
+    <div class="padding-sides">
+
+
+      <p class="click-icons-text">Click icons to add additional accounts</p>
+      <div class="icons">
+        <button type="button" id="add-insta">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_2_769)">
+              <path
+                d="M24 4.32187C30.4125 4.32187 31.1719 4.35 33.6938 4.4625C36.0375 4.56562 37.3031 4.95938 38.1469 5.2875C39.2625 5.71875 40.0688 6.24375 40.9031 7.07812C41.7469 7.92188 42.2625 8.71875 42.6938 9.83438C43.0219 10.6781 43.4156 11.9531 43.5188 14.2875C43.6313 16.8187 43.6594 17.5781 43.6594 23.9813C43.6594 30.3938 43.6313 31.1531 43.5188 33.675C43.4156 36.0188 43.0219 37.2844 42.6938 38.1281C42.2625 39.2438 41.7375 40.05 40.9031 40.8844C40.0594 41.7281 39.2625 42.2438 38.1469 42.675C37.3031 43.0031 36.0281 43.3969 33.6938 43.5C31.1625 43.6125 30.4031 43.6406 24 43.6406C17.5875 43.6406 16.8281 43.6125 14.3063 43.5C11.9625 43.3969 10.6969 43.0031 9.85313 42.675C8.7375 42.2438 7.93125 41.7188 7.09688 40.8844C6.25313 40.0406 5.7375 39.2438 5.30625 38.1281C4.97813 37.2844 4.58438 36.0094 4.48125 33.675C4.36875 31.1438 4.34063 30.3844 4.34063 23.9813C4.34063 17.5688 4.36875 16.8094 4.48125 14.2875C4.58438 11.9437 4.97813 10.6781 5.30625 9.83438C5.7375 8.71875 6.2625 7.9125 7.09688 7.07812C7.94063 6.23438 8.7375 5.71875 9.85313 5.2875C10.6969 4.95938 11.9719 4.56562 14.3063 4.4625C16.8281 4.35 17.5875 4.32187 24 4.32187ZM24 0C17.4844 0 16.6688 0.028125 14.1094 0.140625C11.5594 0.253125 9.80625 0.665625 8.2875 1.25625C6.70312 1.875 5.3625 2.69062 4.03125 4.03125C2.69063 5.3625 1.875 6.70313 1.25625 8.27813C0.665625 9.80625 0.253125 11.55 0.140625 14.1C0.028125 16.6687 0 17.4844 0 24C0 30.5156 0.028125 31.3312 0.140625 33.8906C0.253125 36.4406 0.665625 38.1938 1.25625 39.7125C1.875 41.2969 2.69063 42.6375 4.03125 43.9688C5.3625 45.3 6.70313 46.125 8.27813 46.7344C9.80625 47.325 11.55 47.7375 14.1 47.85C16.6594 47.9625 17.475 47.9906 23.9906 47.9906C30.5063 47.9906 31.3219 47.9625 33.8813 47.85C36.4313 47.7375 38.1844 47.325 39.7031 46.7344C41.2781 46.125 42.6188 45.3 43.95 43.9688C45.2812 42.6375 46.1063 41.2969 46.7156 39.7219C47.3063 38.1938 47.7188 36.45 47.8313 33.9C47.9438 31.3406 47.9719 30.525 47.9719 24.0094C47.9719 17.4938 47.9438 16.6781 47.8313 14.1188C47.7188 11.5688 47.3063 9.81563 46.7156 8.29688C46.125 6.70312 45.3094 5.3625 43.9688 4.03125C42.6375 2.7 41.2969 1.875 39.7219 1.26562C38.1938 0.675 36.45 0.2625 33.9 0.15C31.3313 0.028125 30.5156 0 24 0Z"
+                fill="#000100" />
+              <path
+                d="M24 11.6719C17.1938 11.6719 11.6719 17.1938 11.6719 24C11.6719 30.8062 17.1938 36.3281 24 36.3281C30.8062 36.3281 36.3281 30.8062 36.3281 24C36.3281 17.1938 30.8062 11.6719 24 11.6719ZM24 31.9969C19.5844 31.9969 16.0031 28.4156 16.0031 24C16.0031 19.5844 19.5844 16.0031 24 16.0031C28.4156 16.0031 31.9969 19.5844 31.9969 24C31.9969 28.4156 28.4156 31.9969 24 31.9969Z"
+                fill="#000100" />
+              <path
+                d="M39.6937 11.1844C39.6937 12.7782 38.4 14.0625 36.8156 14.0625C35.2219 14.0625 33.9375 12.7688 33.9375 11.1844C33.9375 9.59065 35.2313 8.30627 36.8156 8.30627C38.4 8.30627 39.6937 9.60003 39.6937 11.1844Z"
+                fill="#000100" />
+            </g>
+            <defs>
+              <clipPath id="clip0_2_769">
+                <rect width="48" height="48" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+        </button>
+        <button type="button" id="add-tiktok">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M34.353 17.3269C37.4397 19.5413 41.2211 20.8442 45.3051 20.8442V12.9572C44.5322 12.9574 43.7613 12.8765 43.0051 12.7157V18.9239C38.9214 18.9239 35.1405 17.621 32.053 15.4068V31.5017C32.053 39.5533 25.5492 46.0798 17.5268 46.0798C14.5334 46.0798 11.7512 45.1716 9.44006 43.6141C12.0779 46.3208 15.7565 48 19.8263 48C27.8492 48 34.3534 41.4734 34.3534 33.4215V17.3269H34.353V17.3269ZM37.1904 9.36999C35.6129 7.64045 34.5772 5.40535 34.353 2.93435V1.91992H32.1735C32.7221 5.06056 34.5934 7.74374 37.1904 9.36999ZM14.5142 37.4356C13.6329 36.2759 13.1566 34.8572 13.1587 33.3985C13.1587 29.716 16.1336 26.7302 19.8037 26.7302C20.4877 26.7301 21.1675 26.8352 21.8194 27.0427V18.9795C21.0576 18.8748 20.2888 18.8303 19.5203 18.8466V25.1226C18.868 24.915 18.1878 24.8096 17.5037 24.8103C13.8335 24.8103 10.8589 27.7957 10.8589 31.4787C10.8589 34.0828 12.3458 36.3373 14.5142 37.4356Z"
+              fill="#FF004F" />
+            <path
+              d="M32.0529 15.4066C35.1404 17.6208 38.9213 18.9237 43.005 18.9237V12.7156C40.7255 12.2283 38.7075 11.0328 37.1903 9.36999C34.5931 7.74358 32.722 5.0604 32.1733 1.91992H26.4482V33.4212C26.4352 37.0936 23.4655 40.0672 19.8032 40.0672C17.6451 40.0672 15.7279 39.0348 14.5136 37.4356C12.3454 36.3373 10.8585 34.0826 10.8585 31.4789C10.8585 27.7962 13.8331 24.8104 17.5032 24.8104C18.2064 24.8104 18.8842 24.9203 19.5199 25.1228V18.8468C11.6384 19.0102 5.2998 25.473 5.2998 33.4214C5.2998 37.3892 6.87827 40.9861 9.44013 43.6143C11.7513 45.1716 14.5335 46.08 17.5268 46.08C25.5494 46.08 32.0531 39.5531 32.0531 31.5017V15.4066H32.0529Z"
+              fill="black" />
+            <path
+              d="M43.0051 12.7156V11.037C40.9495 11.0401 38.9343 10.4624 37.1903 9.36987C38.7342 11.0661 40.7671 12.2357 43.0051 12.7156ZM32.1734 1.91997C32.1211 1.61982 32.0809 1.3177 32.053 1.01443V0H24.148V31.5016C24.1354 35.1735 21.1658 38.1471 17.5033 38.1471C16.428 38.1471 15.4128 37.891 14.5137 37.4358C15.7279 39.0349 17.6452 40.0671 19.8033 40.0671C23.4652 40.0671 26.4354 37.0938 26.4482 33.4214V1.91997H32.1734ZM19.5203 18.8468V17.0598C18.8598 16.9692 18.1938 16.9237 17.5271 16.924C9.50383 16.9239 3 23.4508 3 31.5016C3 36.5491 5.55612 40.9974 9.44034 43.614C6.87848 40.986 5.30002 37.3889 5.30002 33.4213C5.30002 25.473 11.6385 19.0102 19.5203 18.8468Z"
+              fill="#00F2EA" />
+          </svg>
+        </button>
+        <button type="button" id="add-facebook">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M48 24C48 10.7452 37.2548 0 24 0C10.7452 0 0 10.7452 0 24C0 35.9789 8.77641 45.908 20.25 47.7084V30.9375H14.1562V24H20.25V18.7125C20.25 12.6975 23.8331 9.375 29.3152 9.375C31.9402 9.375 34.6875 9.84375 34.6875 9.84375V15.75H31.6613C28.68 15.75 27.75 17.6002 27.75 19.5V24H34.4062L33.3422 30.9375H27.75V47.7084C39.2236 45.908 48 35.9789 48 24Z"
+              fill="#1877F2" />
+          </svg>
+        </button>
+      </div>
+      <div class="is-public">
+        <input id="is-public" type="checkbox" hidden>
+        <label for="is-public" role="button">
+          <span class="is-public__text">My social media account is public (we need this for verification)</span>
+          <span class="is-public__button">
+            <span></span>
+          </span>
+        </label>
+      </div>
+      <h3 class="paypal-title">PayPal</h3>
+      <label class="paypal-label">
+        <span class="label-text">
+          PayPal Email Address:
+        </span>
+        <input id="payout-data" type="text" regex="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$|^N/A$" required>
+      </label>
+      <p>We only do payouts via PayPal or via Store Credit (must be a PayPal email address NOT paypal.me account). If
+        you don't have PayPal or wish to be paid via Store credit, please put N/A in the box above.</p>
+      <div class="agreement">
+        <h3>Agreements:</h3>
+        <input id="brand-agreement" type="checkbox" hidden>
+        <label class="agreement__label" role="button" for="brand-agreement">
+          <span>
+            <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+              viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+              <path
+                d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" />
+            </svg>
+          </span>
+          I agree to the <a href="https://www.buckedup.com/information/brand-ambassador-agreement" target="_blank">Brand
+            Ambassador Agreement</a></label>
+        <input id="social-policy" type="checkbox" hidden>
+        <label class="agreement__label" role="button" for="social-policy">
+          <span>
+            <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+              viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+              <path
+                d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" />
+            </svg>
+          </span>
+          I agree to the <a href="https://www.buckedup.com/information/social-media-policy" target="_blank">Social Media
+            Policy</a></label>
+        <input id="privacy-policy" type="checkbox" hidden>
+        <label class="agreement__label" role="button" for="privacy-policy">
+          <span>
+            <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+              viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+              <path
+                d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" />
+            </svg>
+          </span>
+          I agree to the <a href="https://www.buckedup.com/information/privacy-policy" target="_blank">Privacy
+            Policy</a></label>
+      </div>
+      <button type="submit" class="submit">
+        submit
+      </button>
+      <p class="api-error"></p>
+      <p class="questions">
+        *If you have any questions, the<br>team can be reached at<br><a
+          href="mailto:ambassadors@buckedup.com">ambassadors@buckedup.com</a>
+      </p>
+    </div>
   </form>
 </body>
+
 </html>
