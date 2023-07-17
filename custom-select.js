@@ -116,22 +116,6 @@ const watchSelects = () => {
         : selectNameOption.innerHTML;
     selectName.classList.add("custom-select__name");
 
-    document.addEventListener("click", (e) => {
-      if (
-        !customSelect.contains(e.target) &&
-        customSelect.classList.contains("active")
-      ) {
-        customSelect.classList.remove("active");
-      }
-    });
-    customSelect.addEventListener("click", () => {
-      if (!select.hasAttribute("disabled")) {
-        if (customSelect.classList.contains("active"))
-          customSelect.classList.remove("active");
-        else customSelect.classList.add("active");
-      }
-    });
-
     const customOptions = document.createElement("div");
     customOptions.classList.add("custom-select__options");
     customOptions.classList.add("small-scroll");
@@ -147,8 +131,43 @@ const watchSelects = () => {
       });
 
     if (options[0].value !== "") {
-      customOptions.childNodes[0].style.display = "none";
+      customOptions.childNodes[0].style.visibility = "none";
     }
+
+    document.addEventListener("click", (e) => {
+      if (
+        !customSelect.contains(e.target) &&
+        customSelect.classList.contains("active") &&
+        e.target.style.display !== "none"
+      ) {
+        customSelect.classList.remove("active");
+        document.onkeydown = null;
+      }
+    });
+
+    customSelect.addEventListener("click", () => {
+      select.focus();
+      if (!select.hasAttribute("disabled")) {
+        if (customSelect.classList.contains("active")) {
+          customSelect.classList.remove("active");
+          document.onkeydown = null;
+        } else {
+          customSelect.classList.add("active");
+          let keys = "";
+          document.onkeydown = (e) => {
+            keys = keys + e.key;
+            customSelect
+              .querySelectorAll(".custom-select__option")
+              .forEach((el) => {
+                if (el.innerHTML.toLowerCase().startsWith(keys)) {
+                  el.focus();
+                  return;
+                }
+              });
+          };
+        }
+      }
+    });
 
     select.addEventListener("directChange", () => {
       const newSelected = options.filter((op) => op.value === select.value)[0];
@@ -166,10 +185,10 @@ const watchSelects = () => {
   }
 };
 
+watchSelects();
+
 document.querySelectorAll("[role='button']").forEach((el) => {
   el.addEventListener("keydown", (event) => {
     if (event.key === "Enter") el.click();
   });
 });
-
-watchSelects();
