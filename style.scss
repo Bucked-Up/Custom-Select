@@ -54,7 +54,7 @@
   &.active {
     .custom-select {
       &__options {
-        max-height: 7rem;
+        max-height: 10rem;
         overflow-y: scroll;
         z-index: 2;
       }
